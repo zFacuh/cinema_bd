@@ -1,0 +1,114 @@
+/* Estilos Generales del Admin */
+.admin-form {
+    display: grid;
+    grid-template-columns: 1fr; /* 1 columna por defecto */
+    gap: 15px;
+    margin-bottom: 30px;
+}
+/* En pantallas más grandes, usamos 2 columnas */
+@media (min-width: 768px) {
+    .admin-form {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.admin-form label {
+    font-size: 0.9rem;
+    color: var(--color-texto-sec);
+    margin-bottom: 5px;
+}
+
+.admin-form input,
+.admin-form textarea,
+.admin-form select {
+    width: 100%;
+    padding: 8px;
+    background-color: #333;
+    border: 1px solid #555;
+    color: var(--color-texto);
+    border-radius: 4px;
+    box-sizing: border-box; 
+}
+
+.admin-form .full-width {
+    grid-column: 1 / -1;
+}
+
+.btn-guardar {
+    background-color: var(--color-primario);
+    color: #111;
+    border: none;
+    padding: 10px 15px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    font-size: 0.9rem; 
+}
+
+.admin-table th, .admin-table td {
+    border: 1px solid #444;
+    padding: 8px; 
+    text-align: left;
+}
+
+.admin-table th {
+    background-color: #333;
+}
+
+.btn-borrar {
+    background-color: #a00;
+    color: white;
+    border: none;
+    padding: 5px 8px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 0.8rem;
+}
+
+.dashboard-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr; 
+    gap: 20px;
+    max-width: 1400px;
+    margin: 20px auto;
+    padding: 0 20px;
+}
+
+.admin-column {
+    background-color: var(--color-superficie);
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.admin-column h1 {
+    font-size: 1.8rem;
+    color: var(--color-primario);
+    text-align: left;
+    margin-top: 0;
+}
+
+.admin-column h2 {
+    font-size: 1.3rem;
+    border-bottom: 1px solid #444;
+    padding-bottom: 5px;
+}
+
+/* Para pantallas chicas, ponemos una columna encima de la otra */
+@media (max-width: 1200px) {
+    .dashboard-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+.admin-column-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}

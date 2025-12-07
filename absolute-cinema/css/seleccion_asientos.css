@@ -1,0 +1,118 @@
+
+.seat-selection-container {
+    max-width: 900px;
+    margin: 20px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.info-funcion {
+    width: 100%;
+    background-color: var(--color-superficie);
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+.info-funcion h2 {
+    margin: 0 0 5px 0;
+    color: var(--color-primario);
+}
+.info-funcion p {
+    margin: 0;
+    font-size: 1.1rem;
+}
+
+/* La Sala */
+.sala-container {
+    perspective: 1000px; 
+    margin-bottom: 20px;
+}
+
+.pantalla {
+    width: 100%;
+    height: 50px;
+    background-color: #fff;
+    margin-bottom: 30px;
+    text-align: center;
+    line-height: 50px;
+    color: #111;
+    font-weight: bold;
+    transform: rotateX(-35deg);
+    box-shadow: 0 3px 10px rgba(255, 255, 255, 0.7);
+}
+
+.sala-grid {
+    display: grid;
+    gap: 8px; 
+}
+
+.asiento {
+    width: 30px;
+    height: 25px;
+    border-radius: 5px 5px 2px 2px;
+    background-color: #444;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.asiento.disponible {
+    background-color: #888; 
+    cursor: pointer;
+}
+
+.asiento.disponible:hover {
+    transform: scale(1.1);
+    background-color: #aaa;
+}
+
+.asiento.seleccionado {
+    background-color: var(--color-primario); 
+    transform: scale(1.1);
+    box-shadow: 0 0 10px var(--color-primario);
+    cursor: pointer;
+}
+
+.asiento.ocupado {
+    background-color: #333; 
+    cursor: not-allowed;
+}
+
+.leyenda {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+.leyenda .item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.leyenda .asiento {
+    width: 20px;
+    height: 15px;
+}
+
+.resumen-compra {
+    background-color: var(--color-superficie);
+    padding: 20px;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 500px;
+    text-align: center;
+}
+.resumen-compra h3 {
+    margin-top: 0;
+}
+.resumen-compra p {
+    font-size: 1.2rem;
+}
+.resumen-compra span {
+    color: var(--color-primario);
+    font-weight: bold;
+}
+#btn-confirmar {
+    width: 100%;
+    font-size: 1.2rem;
+}

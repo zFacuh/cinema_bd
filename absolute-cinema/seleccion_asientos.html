@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selección de Asientos - Absolute Cinema</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/seleccion_asientos.css">
+</head>
+<body>
+
+    <header>
+        <nav class="navbar">
+            <div class="nav-brand">
+                <a href="index.html">ABSOLUTE CINEMA</a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Cartelera</a></li>
+                <li id="nav-auth"><a href="login.html">Login / Registro</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="seat-selection-container">
+
+        <div class="info-funcion">
+            <h2 id="info-titulo">Cargando...</h2>
+            <p id="info-horario">...</p>
+        </div>
+
+        <div class="sala-container">
+            <div class="pantalla">PANTALLA</div>
+            
+            <div id="sala-grid-container" class="sala-grid">
+                </div>
+        </div>
+
+        <div class="leyenda">
+            <div class="item"><div class="asiento disponible"></div> Disponible</div>
+            <div class="item"><div class="asiento seleccionado"></div> Seleccionado</div>
+            <div class="item"><div class="asiento ocupado"></div> Ocupado</div>
+        </div>
+
+        <div class="resumen-compra">
+            <h3>RESUMEN DE TU SELECCIÓN</h3>
+            <p>Asientos: <span id="resumen-cantidad">0</span></p>
+            <p>Total: <span id="resumen-total">$ 0.00</span></p>
+            <button id="btn-confirmar" class="btn-guardar">Confirmar Asientos</button>
+            <p id="error-msg" style="color: #f88; margin-top: 10px;"></p>
+        </div>
+
+    </main>
+
+    <script src="js/seleccion_asientos.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmar Compra - Absolute Cinema</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/admin_dashboard.css">
+    <style>
+        .confirm-container { max-width: 600px; margin: 40px auto; padding: 20px; background-color: var(--color-superficie); border-radius: 8px; }
+        .resumen-linea { display: flex; justify-content: space-between; font-size: 1.1rem; padding: 12px 0; border-bottom: 1px solid #444; align-items: center; }
+        .resumen-linea span:last-child { font-weight: bold; color: var(--color-texto); text-align: right; }
+        .resumen-linea label { color: var(--color-texto-sec); }
+        .resumen-linea select { width: 50%; padding: 8px; background-color: #333; border: 1px solid #555; color: var(--color-texto); border-radius: 4px; }
+        .resumen-total { font-size: 1.5rem; font-weight: bold; color: var(--color-primario); margin-top: 20px; }
+        #btn-pagar { width: 100%; font-size: 1.3rem; margin-top: 20px; }
+        #mensaje-final { text-align: center; padding: 20px; border-radius: 8px; display: none; }
+        #mensaje-final.success { background-color: #0a4; color: white; }
+        #mensaje-final.error { background-color: #a00; color: white; }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="nav-brand"> <a href="index.html">ABSOLUTE CINEMA</a> </div>
+            <ul class="nav-links"> <li id="nav-auth"><a href="login.html">Login / Registro</a></li> </ul>
+        </nav>
+    </header>
+
+    <main class="confirm-container">
+        <div id="mensaje-final"></div>
+        <div id="resumen-wrapper">
+            <h1>Confirmar tu Compra</h1>
+            
+            <div class="resumen-linea">
+                <span>Comprador:</span>
+                <span id="resumen-comprador">Cargando...</span>
+            </div>
+            <div class="resumen-linea">
+                <span>Película:</span>
+                <span id="resumen-pelicula">Cargando...</span>
+            </div>
+            <div class="resumen-linea">
+                <span>Sala:</span>
+                <span id="resumen-sala">Cargando...</span>
+            </div>
+            <div class="resumen-linea">
+                <span>Función:</span>
+                <span id="resumen-horario">Cargando...</span>
+            </div>
+            <div class="resumen-linea">
+                <span>Fecha:</span>
+                <span id="resumen-fecha">Cargando...</span>
+            </div>
+            <div class="resumen-linea">
+                <span>Asientos:</span>
+                <span id="resumen-asientos">Cargando...</span>
+            </div>
+            
+            <div class="resumen-linea">
+                <label for="medio-pago">Medio de Pago:</label>
+                <select id="medio-pago">
+                    <option value="Mercado Pago">Mercado Pago</option>
+                    <option value="Tarjeta de Débito">Tarjeta de Débito</option>
+                    <option value="Tarjeta de Crédito">Tarjeta de Crédito</option>
+                    <option value="Cuenta DNI">Cuenta DNI</option>
+                </select>
+            </div>
+
+            <div class="resumen-linea resumen-total">
+                <span>TOTAL A PAGAR:</span>
+                <span id="resumen-total">$ 0.00</span>
+            </div>
+            
+            <button id="btn-pagar" class="btn-guardar">Pagar Ahora (Simulación)</button>
+        </div>
+    </main>
+
+    <script src="js/confirmacion_compra.js"></script>
+</body>
+</html>

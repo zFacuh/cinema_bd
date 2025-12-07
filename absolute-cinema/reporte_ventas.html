@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reporte de Ventas - Absolute Cinema</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/admin_dashboard.css">
+    <style>
+        .reporte-container { max-width: 1300px; margin: 20px auto; padding: 20px; background-color: var(--color-superficie); border-radius: 8px; }
+        .reporte-filtros { display: flex; gap: 20px; align-items: flex-end; margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid #444; }
+        .reporte-filtros .form-group { display: flex; flex-direction: column; }
+        .reporte-filtros label { font-size: 0.9rem; color: var(--color-texto-sec); margin-bottom: 5px; }
+        .reporte-filtros input { padding: 8px; background-color: #333; border: 1px solid #555; color: var(--color-texto); border-radius: 4px; }
+        .reporte-totales { display: flex; gap: 40px; margin-bottom: 20px; }
+        .total-caja { background-color: #333; padding: 15px; border-radius: 8px; }
+        .total-caja h3 { margin: 0; color: var(--color-texto-sec); font-size: 1rem; }
+        .total-caja p { margin: 5px 0 0 0; color: var(--color-primario); font-size: 2rem; font-weight: bold; }
+
+        /* --- Estructura de Estadísticas --- */
+        .estadisticas-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .stat-box {
+            background-color: #2b2b2b;
+            padding: 15px;
+            border-radius: 8px;
+        }
+        .stat-box h3 {
+            border-bottom: 2px solid var(--color-primario);
+            padding-bottom: 5px;
+        }
+        .stat-list li {
+            list-style: none;
+            padding: 5px 0;
+            border-bottom: 1px dashed #444;
+            display: flex;
+            justify-content: space-between;
+        }
+        .stat-list li span:last-child {
+            color: var(--color-primario);
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav class="navbar">
+            <div class="nav-brand">
+                <a href="index.html">ABSOLUTE CINEMA</a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Cartelera</a></li>
+                <li><a href="admin_dashboard.html">Admin Dashboard</a></li>
+                <li><a href="reporte_ventas.html">Reporte de Ventas</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="reporte-container">
+        <h1>Reporte de Ventas</h1>
+        
+        <div class="reporte-filtros">
+            <div class="form-group">
+                <label for="fecha-inicio">Fecha Desde:</label>
+                <input type="date" id="fecha-inicio">
+            </div>
+            <div class="form-group">
+                <label for="fecha-fin">Fecha Hasta:</label>
+                <input type="date" id="fecha-fin">
+            </div>
+            <div class="form-group">
+                <label for="filtro-cliente">Filtro Cliente (Nombre/Email):</label>
+                <input type="text" id="filtro-cliente" placeholder="Ej: Pedro o @gmail.com">
+            </div>
+            <button id="btn-generar-reporte" class="btn-guardar" style="align-self: flex-end;">Generar Reporte</button>
+            </div>
+
+        <h2>Resumen del Período</h2>
+        <div class="reporte-totales">
+            <div class="total-caja">
+                <h3>Total Recaudado</h3>
+                <p id="total-ventas">$ 0.00</p>
+            </div>
+            <div class="total-caja">
+                <h3>Tickets Vendidos</h3>
+                <p id="total-tickets">0</p>
+            </div>
+        </div>
+
+        <h2>Estadísticas Clave</h2>
+        <div class="estadisticas-grid">
+            
+            <div class="stat-box">
+                <h3>Top 5 Películas por Recaudación</h3>
+                <ul id="top-peliculas-list" class="stat-list">
+                    <li>Cargando...</li>
+                </ul>
+            </div>
+
+            <div class="stat-box">
+                <h3>Horarios más Comprados</h3>
+                <ul id="top-horarios-list" class="stat-list">
+                    <li>Cargando...</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2 style="margin-top: 40px;">Detalle de Transacciones</h2>
+        <table class="admin-table">
+            <thead>
+                <tr>
+                    <th>Fecha Compra</th>
+                    <th>Comprador</th>
+                    <th>Email</th>
+                    <th>Película</th>
+                    <th>Sala</th>
+                    <th>Asiento</th>
+                    <th>Medio Pago</th>
+                    <th>Precio</th>
+                    <th>Reseña</th> </tr>
+            </thead>
+            <tbody id="tabla-reporte-body">
+                </tbody>
+        </table>
+
+    </main>
+
+    <script src="js/reporte_ventas.js"></script>
+
+</body>
+</html>

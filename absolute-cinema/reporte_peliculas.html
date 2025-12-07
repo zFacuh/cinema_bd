@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reporte de Películas - Absolute Cinema</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        #filtro { margin-bottom: 20px; }
+        #resultados { border-top: 1px solid #ccc; margin-top: 20px; }
+        .pelicula { border-bottom: 1px solid #eee; padding: 10px; }
+        .pelicula h3 { margin: 0; }
+        .pelicula span { background-color: #f0f0f0; padding: 2px 5px; border-radius: 4px; }
+    </style>
+</head>
+<body>
+
+    <h1>Reporte de Películas</h1>
+
+    <div id="filtro">
+        <label for="inputGenero">Filtrar por Género:</label>
+        <input type="text" id="inputGenero" placeholder="Comedia, Accion, Drama...">
+        <button id="btnBuscar">Buscar</button>
+    </div>
+
+    <div id="resultados">
+        </div>
+
+    <script>
+
+        // Referencias a elementos del DOM
+        const inputGenero = document.getElementById('inputGenero');
+        const btnBuscar = document.getElementById('btnBuscar');
+        const divResultados = document.getElementById('resultados');
+
+       
+    
+        const API_URL_BASE = 'http://localhost/absolute-cinema/api_peliculas.php';
+
+        // Función para buscar películas
+        async function buscarPeliculas() {
+            const genero = inputGenero.value;
+            let url = API_URL_BASE;
+
+            // Si el usuario escribió un género, lo añadimos como parámetro
+            if (genero) {
+                url += `?genero=${encodeURIComponent(genero)}`;
+            }
+
+            // Limpiamos resultados anteriores
+            divResultados.innerHTML = '<p>Cargando...</p>';
+
+            try {
+                //  La "llamada mediante JS" usando fetch
+                const response = await fetch(url);
+                
+                if (!response.ok) {
+                    throw new Error(`Error HTTP: ${response.status}`);
+                }
+
+                //  Convertimos la respuesta JSON
+                const peliculas = await response.json();
+
+                //  Mostramos los datos en la pantalla
+                mostrarResultados(peliculas);
+
+            } catch (error) {
+                console.error('Error al llamar a la API:', error);
+                divResultados.innerHTML = `<p>Error al cargar los datos: ${error.message}</p>`;
+            }
+        }
+
+        // Función para "mostrar" los resultados en el HTML
+        function mostrarResultados(peliculas) {
+            // Limpiamos el "cargando"
+            divResultados.innerHTML = '';
+
+            if (peliculas.length === 0) {
+                divResultados.innerHTML = '<p>No se encontraron películas para ese filtro.</p>';
+                return;
+            }
+
+            // Creamos el HTML para cada película
+            peliculas.forEach(peli => {
+                const peliDiv = document.createElement('div');
+                peliDiv.className = 'pelicula';
+                peliDiv.innerHTML = `
+                    <h3>${peli.Titulo} <span>${peli.Genero}</span></h3>
+                    <p><strong>Clasificación:</strong> ${peli.Clasificacion} | <strong>Duración:</strong> ${peli.Duracion}</p>
+                    <p>${peli.Sinopsis}</p>
+                `;
+                divResultados.appendChild(peliDiv);
+            });
+        }
+
+        // Asignamos el evento al botón
+        btnBuscar.addEventListener('click', buscarPeliculas);
+
+        // Carga inicial 
+        buscarPeliculas();
+
+    </script>
+
+</body>
+</html>
